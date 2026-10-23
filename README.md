@@ -1,59 +1,61 @@
-# Realistic Mini Dramas
+# Realistic Mini Dramas: VideoExpress Workflow v1.0
 
-Create original mini dramas in VideoExpress with locked characters, dialogue, screen direction and prop continuity.
+Paste one prompt, name a topic and pick a style. Your AI agent then builds a **fast-paced 9:16 mini drama** for TikTok, Reels and Shorts inside [VideoExpress](https://app.videoexpress.ai/). It writes the script and storyboard, creates consistent characters, generates every shot, **cuts the dead air** on the timeline and exports a 1080×1920 MP4.
 
 ![Realistic Mini Dramas](assets/thumbnail/thumbnail-1200x630.png)
 
-**Community:** [Realistic Mini Dramas Workflow](https://community.dualup.com/@videoexpress/workflows/realistic-mini-dramas-workflow)
+**Community page:** [Realistic Mini Dramas Workflow](https://community.dualup.com/@videoexpress/workflows/realistic-mini-dramas-workflow)
 
-## Start here
+## Quick start (2 minutes)
 
-1. Sign in to VideoExpress in your chosen browser.
-2. Copy [SYSTEM_PROMPT.md](SYSTEM_PROMPT.md) into a Claude or ChatGPT session with browser tools.
-3. Answer the producer's story-idea question, unless you already supplied an idea.
-4. The producer develops the story, generates and inspects each starting image, animates that exact image, reviews the clips, assembles, saves and exports within the prompt's operation limits.
+> ⚠️ **ChatGPT users: follow [CHATGPT_SETUP.md](CHATGPT_SETUP.md) instead of pasting the long prompt.** ChatGPT turns long pastes into a file it then fails to open ("file read is failing", "process launcher failed"). The setup puts the instructions in a Project or custom GPT and has you send a short first message.
 
-The current prompt produces **four shots, 24–32 seconds, 9:16 vertical**, using an image-first workflow. It does not require a separate audit or routine per-stage approvals. It allows up to eight image submissions and eight video submissions total, with at most two video attempts per shot. Actual tool permission requirements still apply.
+1. **Sign in** to https://app.videoexpress.ai/ (or sign in when the agent asks).
+2. Open a chat that can **control a browser**:
+   - **ChatGPT:** see [CHATGPT_SETUP.md](CHATGPT_SETUP.md) (Project instructions + Agent mode + a short first message)
+   - **Claude:** Claude in Chrome, or the Claude desktop app's built-in browser
+3. **Claude:** copy everything in [SYSTEM_PROMPT.md](SYSTEM_PROMPT.md) below the line and paste it.
+4. Answer the one question:
+   - **Topic:** e.g. "A bride finds out her groom is her sister's ex"
+   - **Style:** **Realistic**, **3D**, **2D**, or anything else (anime, claymation…)
+   - *(optional)* a reference video link, and a length (default 45 s)
+5. Wait. The agent produces, trims and exports, then sends you the download link.
 
-The thumbnail illustrates the separate **nine-shot, 45-second** Hold the Line examples. Example packs and the optional CLI preserve historical contracts and are not the current prompt's default production specification.
+There's no audit, no preflight and no approval step. The agent only comes back to you if VideoExpress needs you to sign in, accept its one-time Terms or top up credits.
+
+## How it works
+
+| Stage | What the agent does in VideoExpress |
+|---|---|
+| Script and storyboard | Hook-first story, about 3 s per shot (45 s ≈ 15 shots), 8-word lines max, twist at ~70% |
+| Characters | Character Bible plus **+ Consistent Character** references |
+| Style routing | **Realistic** → *Create Video From Prompt*, Image Type **Photorealistic (Cinematic)**, Creative mode **off**. **3D / 2D / other** → Image Type 3D / 2D / Other with **Use Creative mode on** |
+| Shots | Image first, then video. 4 s clips (5 s with dialogue), motion from frame 1, no music, public gallery off |
+| Edit | Clips placed in order on track 1 with **Auto Align Clips** |
+| **Dead-air trim** | Every frozen or silent head and tail cut out (Cut + Delete at 40 px/s), gaps closed |
+| Export | High / FullHD 1080×1920 / MP4, with the link from **My Videos** |
 
 ## Files
 
-| File or folder | Purpose |
+| File | Use it for |
 |---|---|
-| [SYSTEM_PROMPT.md](SYSTEM_PROMPT.md) | Copy-ready producer instructions |
-| [docs/community-entry.md](docs/community-entry.md) | Full guide, steps, examples and limitations |
-| [examples/returned-key](examples/returned-key) | Four-shot dialogue planning example |
-| [examples/farmer-zombie](examples/farmer-zombie) | Hold the Line: landscape, eight shots |
-| [examples/farmer-zombie-v2](examples/farmer-zombie-v2) | Hold the Line: vertical, nine shots, 45 seconds |
-| [examples/farmer-zombie-v3-3d](examples/farmer-zombie-v3-3d) | Vertical 3D-cartoon variant |
-| [docs/run-report.md](docs/run-report.md) | Reported generation/export observations and pending QA |
-| [skills/realistic-mini-dramas](skills/realistic-mini-dramas) | Extended continuity, QA and recovery instructions |
-| `src/`, `schemas/`, `tests/` | Optional local planning and validation tools |
+| [CHATGPT_SETUP.md](CHATGPT_SETUP.md) | **ChatGPT:** one-time Project/GPT setup plus the short first message |
+| [SYSTEM_PROMPT.md](SYSTEM_PROMPT.md) | **The full prompt.** Paste it into Claude or any chat that doesn't turn long pastes into files |
+| [PROMPT_COMPACT.md](PROMPT_COMPACT.md) | Under 8,000 characters, for custom GPT instructions or Claude Project instructions |
+| [examples/](examples/) | Complete storyboards (Realistic, 3D, 2D) with every prompt written out |
+| [skills/realistic-mini-dramas/](skills/realistic-mini-dramas/) | Agent Skill version with the VideoExpress UI map and pacing/trim guide |
+| [AGENTS.md](AGENTS.md) / [CLAUDE.md](CLAUDE.md) | Auto-loaded by Codex / Claude Code: "run nothing, use the browser" |
+| [docs/troubleshooting.md](docs/troubleshooting.md) | Why v0.3 failed in ChatGPT/Codex, plus symptom → fix |
+| [docs/community-entry.md](docs/community-entry.md) | Copy-ready text for the DualUp community page |
+| [GITHUB_UPLOAD.md](GITHUB_UPLOAD.md) | How to replace the old repo contents with v1.0 |
 
-## Optional local checks
+## Make a custom GPT or Claude Project (optional)
+Paste [PROMPT_COMPACT.md](PROMPT_COMPACT.md) (the part below the line) into the instructions field and turn on browsing/agent capability. Then every new chat starts with the intake question.
 
-Requires Python 3.10 or newer. Run from this repository:
+## Good to know
+- Each image and video generation uses your VideoExpress credits. A 45 s drama is about 15 images plus 15 videos, plus a few retries.
+- VideoExpress renders up to 5 videos in parallel. The agent waits and retries automatically when the cap is hit.
+- AI video can still drift (a face changes, an extra word gets spoken). The Character Bible plus Consistent Character keep that to a minimum.
+- Exports stay in **My Videos** for 40 days.
 
-```bash
-./mini-drama validate examples/returned-key
-./mini-drama plan examples/returned-key --dry-run
-./mini-drama privacy-scan
-python3 -m unittest discover -s tests -v
-```
-
-The CLI plans locally with no spend; its real provider adapter is disabled. `jsonschema` is optional. Media-intake tests use ffmpeg/ffprobe when available. Local `.state/` output is ignored by Git and must not be published; run the privacy scan on a clean package.
-
-## Evidence and limits
-
-The supplied run report records three Hold the Line pilots generated and exported on 2026-10-23. Only first frames were checked; **motion, dialogue and lip-sync rubric QA are unfinished**. This repository publication did not rerun generation or inspect those output videos. Output videos are not bundled.
-
-The exact model label and credit cost were not visible in the reported UI. The default prompt records a hidden vendor model as unknown and uses the live workflow. Exact-model requests still pause generation if unverified. Hidden prices are unknown, never free; the prompt specifies operation limits and respects any stricter user budget. Prompt constraints do not guarantee stable identities, props or voices.
-
-Example projects are historical templates. Follow SYSTEM_PROMPT.md for the current browser workflow; the optional CLI retains its explicit approval records. Keep private media, credentials and signed download links out of Git. Leave public-gallery sharing off unless separately requested.
-
-## Browser startup (v0.3)
-
-In ChatGPT, select the connected Chrome capability (`@Chrome`) when you want to use your own browser. The prompt cannot add a missing browser tool. It distinguishes connection failure, a site login page, and hidden model metadata; it continues drafting while access is repaired. Sign in to VideoExpress in the bound tab, then say “Resume the live form audit.”
-
-[Official OpenAI browser setup guidance](https://developers.openai.com/training/walkthroughs/using-your-computer-and-browser). See [browser regression report](docs/browser-regression.md) for what was and was not tested.
+See [CHANGELOG.md](CHANGELOG.md) for what changed from v0.3.
