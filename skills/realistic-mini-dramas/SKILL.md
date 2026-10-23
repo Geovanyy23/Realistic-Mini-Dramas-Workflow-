@@ -5,7 +5,7 @@ description: Produce a fast-paced vertical 9:16 mini drama (TikTok / Reels / Sho
 
 # Mini Dramas in VideoExpress
 
-The full recipe is `../../SYSTEM_PROMPT.md` at the repository root. Follow it exactly. It is self-contained.
+The full recipe is `../../PLAYBOOK.md` at the repository root (public URL: https://raw.githubusercontent.com/ai-playbooks/realistic-mini-dramas/main/PLAYBOOK.md). Follow it exactly. It is self-contained.
 
 ## Non-negotiables
 1. **Browser only.** Work at https://app.videoexpress.ai/. Run no code, shell, tests or file processing.

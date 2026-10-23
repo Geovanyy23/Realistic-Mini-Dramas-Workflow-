@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0 (2026-10-23): load the playbook from GitHub
+
+- **`SYSTEM_PROMPT.md` is now a short prompt (about 2,500 characters)** that tells the AI to open the full instructions from GitHub in its browser: `https://raw.githubusercontent.com/ai-playbooks/realistic-mini-dramas/main/PLAYBOOK.md`, falling back to the github.com page. It's public, so no login is needed. Short enough that ChatGPT keeps it as text instead of turning it into a file.
+- **New `PLAYBOOK.md`:** the full instruction set, moved here from the old long SYSTEM_PROMPT. Updating it on GitHub updates every user at once.
+- The prompt says which browser to use: the connected external browser if there is one, otherwise the built-in browser, both for reading GitHub and for working in VideoExpress.
+- Built-in fallback essentials, so the AI can still produce if GitHub won't load.
+- README, CHATGPT_SETUP, AGENTS/CLAUDE.md, the skill, the examples and the community page now point to PLAYBOOK.md.
+
 ## 1.0.1 (2026-10-23): ChatGPT paste fix
 
 - **CHATGPT_SETUP.md:** ChatGPT turns long pastes into a file and then fails to open it ("file read is failing", "process launcher failed"). The instructions now go in Project or custom GPT Instructions, and you send a short first message.

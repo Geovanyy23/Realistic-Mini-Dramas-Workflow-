@@ -8,14 +8,12 @@ Paste one prompt, name a topic and pick a style. Your AI agent then builds a **f
 
 ## Quick start (2 minutes)
 
-> ⚠️ **ChatGPT users: follow [CHATGPT_SETUP.md](CHATGPT_SETUP.md) instead of pasting the long prompt.** ChatGPT turns long pastes into a file it then fails to open ("file read is failing", "process launcher failed"). The setup puts the instructions in a Project or custom GPT and has you send a short first message.
-
 1. **Sign in** to https://app.videoexpress.ai/ (or sign in when the agent asks).
-2. Open a chat that can **control a browser**:
-   - **ChatGPT:** see [CHATGPT_SETUP.md](CHATGPT_SETUP.md) (Project instructions + Agent mode + a short first message)
+2. Open a **new chat that can control a browser**:
+   - **ChatGPT:** Agent mode (or Atlas agent mode, or connected Chrome)
    - **Claude:** Claude in Chrome, or the Claude desktop app's built-in browser
-3. **Claude:** copy everything in [SYSTEM_PROMPT.md](SYSTEM_PROMPT.md) below the line and paste it.
-4. Answer the one question:
+3. **Paste the short prompt** from [SYSTEM_PROMPT.md](SYSTEM_PROMPT.md) (everything below the line, about 2,500 characters). It tells the AI to open the full [PLAYBOOK.md](PLAYBOOK.md) from this public repo in its browser. No GitHub login is needed, and it's short enough that ChatGPT keeps it as text instead of turning it into a file.
+4. Answer the one question (or fill in the Topic/Style lines at the end of the prompt):
    - **Topic:** e.g. "A bride finds out her groom is her sister's ex"
    - **Style:** **Realistic**, **3D**, **2D**, or anything else (anime, claymation…)
    - *(optional)* a reference video link, and a length (default 45 s)
@@ -39,8 +37,9 @@ There's no audit, no preflight and no approval step. The agent only comes back t
 
 | File | Use it for |
 |---|---|
-| [CHATGPT_SETUP.md](CHATGPT_SETUP.md) | **ChatGPT:** one-time Project/GPT setup plus the short first message |
-| [SYSTEM_PROMPT.md](SYSTEM_PROMPT.md) | **The full prompt.** Paste it into Claude or any chat that doesn't turn long pastes into files |
+| [SYSTEM_PROMPT.md](SYSTEM_PROMPT.md) | **The prompt to paste.** Short, and loads PLAYBOOK.md from GitHub. Also what goes on the community page |
+| [PLAYBOOK.md](PLAYBOOK.md) | **The full instructions** the AI reads from GitHub. Edit this to update every user at once |
+| [CHATGPT_SETUP.md](CHATGPT_SETUP.md) | ChatGPT tips, plus an optional Project/custom GPT setup |
 | [PROMPT_COMPACT.md](PROMPT_COMPACT.md) | Under 8,000 characters, for custom GPT instructions or Claude Project instructions |
 | [examples/](examples/) | Complete storyboards (Realistic, 3D, 2D) with every prompt written out |
 | [skills/realistic-mini-dramas/](skills/realistic-mini-dramas/) | Agent Skill version with the VideoExpress UI map and pacing/trim guide |

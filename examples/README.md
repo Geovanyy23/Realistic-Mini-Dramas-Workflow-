@@ -1,6 +1,6 @@
 # Example packs
 
-Copy-ready reference productions built exactly to `SYSTEM_PROMPT.md`: same shot math, style rows, prompt templates and pacing rules. Each prompt is written out in full, with the style tag and the Character Bible text spelled out every time, so nothing has to be filled in.
+Copy-ready reference productions built exactly to `PLAYBOOK.md`: same shot math, style rows, prompt templates and pacing rules. Each prompt is written out in full, with the style tag and the Character Bible text spelled out every time, so nothing has to be filled in.
 
 | Pack | Style | Image Type / Creative mode | Length | Shots |
 |---|---|---|---|---|

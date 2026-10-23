@@ -1,5 +1,5 @@
 # Compact prompt (under 8,000 characters)
-**ChatGPT users:** paste this into a Project's Instructions or a custom GPT's Instructions, never into a chat message. ChatGPT turns long chat pastes into files it can't open. See CHATGPT_SETUP.md. It also works for Claude Project instructions. Paste everything below the line. Same behavior as SYSTEM_PROMPT.md.
+**ChatGPT users:** paste this into a Project's Instructions or a custom GPT's Instructions, never into a chat message. ChatGPT turns long chat pastes into files it can't open. See CHATGPT_SETUP.md. It also works for Claude Project instructions. Paste everything below the line. Same behavior as PLAYBOOK.md. For most people the short SYSTEM_PROMPT.md, which loads PLAYBOOK.md from GitHub, is easier.
 
 ---
 
