@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.1 (2026-10-23): Full access note first
+
+- **Root cause confirmed:** on Mac and Windows, ChatGPT's browser automation can't start unless the chat is in **Full access** mode (Settings → General → Permissions, then selected in the chat). The earlier "process launcher failed" errors were this, not VideoExpress and not the long paste.
+- The prompt's **first message now shows a Full access NOTE** with a 3-step guide (plus Mac Screen Recording/Accessibility) before asking for the topic. Claude and other assistants skip the note.
+- Browser/process errors during a run now trigger the same note and a "reply done" wait, then a new browser session.
+- `CHATGPT_SETUP.md`, README, troubleshooting, PROMPT_COMPACT and the community page updated to match.
+
 ## 1.1.0 (2026-10-23): load the playbook from GitHub
 
 - **`SYSTEM_PROMPT.md` is now a short prompt (about 2,500 characters)** that tells the AI to open the full instructions from GitHub in its browser: `https://raw.githubusercontent.com/ai-playbooks/realistic-mini-dramas/main/PLAYBOOK.md`, falling back to the github.com page. It's public, so no login is needed. Short enough that ChatGPT keeps it as text instead of turning it into a file.

@@ -1,19 +1,17 @@
 # Troubleshooting
 
-## Why the old version failed in ChatGPT / Codex
+## Why it failed in ChatGPT / Codex
 
-The error you saw:
+The errors:
 
 > "both the file reader and the browser-control runtime failed to start with the same process security error… the process launcher is still failing"
+> "the local process launcher failed, and the browser-control session exited unexpectedly"
 
-**What happened** (pieced together from the error text and the v0.3 files; the original Codex logs weren't available):
+**Main cause: ChatGPT didn't have Full access.** On Mac and Windows, ChatGPT runs its browser tool through a process launcher. In the default **Ask for approval** mode that launcher is sandboxed, so the browser tool and the file reader both fail to start. Once the chat is switched to **Full access**, the same prompt works end to end. That's why the prompt's first message now shows a Full access NOTE before asking for a topic.
 
-1. **The v0.3 repo told the agent to do local computer work before making anything.** `CLAUDE.md`, `SKILL.md` and the README asked it to read several files, run the `./mini-drama` Python CLI (`validate`, `plan --dry-run`, `privacy-scan`), run the unit tests, and then do a live "capability audit" with approval gates (Gate A, B, C, E) before generating.
-2. **Codex runs that kind of work as local processes inside a sandbox.** The sandbox's process launcher refused to start them. That refusal is the "process security error."
-3. **The browser-control runtime starts through the same process launcher, so it failed too.** The agent lost its file reader and its browser at once.
-4. **The prompt then stopped.** It treated the failed checks as blockers and asked you to "retry once the runtime is available". It never got to VideoExpress.
+**Made worse by v0.3's design.** The old package also told the agent to read several files, run the `./mini-drama` Python CLI and unit tests, and do a live "capability audit" with approval gates before generating. Each of those was another process launch to fail on, and the prompt stopped at the first failure instead of continuing. v1.x removed all of it.
 
-VideoExpress itself was never the problem. The app doesn't block browser automation. The failures all happened in the chat environment, before the agent reached the site.
+VideoExpress itself was never the problem. The app doesn't block browser automation.
 
 ## What v1.0 changes
 
@@ -32,12 +30,11 @@ VideoExpress itself was never the problem. The app doesn't block browser automat
 **The one honest limit:** if your chat environment's own browser tool cannot launch, no prompt can fix that. That's the platform, not the workflow. Start a fresh session with browser or agent mode enabled and paste again. v1.0 will at least hand you the full script and prompts before stopping, so nothing is lost.
 
 ### ChatGPT (recommended setup)
-1. Open a **new chat** with **Agent mode** on.
-2. Paste the **short prompt** from `SYSTEM_PROMPT.md` (everything below the line, about 2,500 characters). It's short enough that ChatGPT keeps it as text. Never paste a long prompt, because ChatGPT turns long pastes into a file and opening that file is what fails with *"file read is failing"* / *"process launcher failed"*.
-3. The AI opens the full `PLAYBOOK.md` from GitHub in its browser. It's public, so no login is needed. It uses a connected external browser if there is one, otherwise its built-in browser.
-4. Sign in to VideoExpress or accept its one-time Terms screen when asked, then reply `done`.
-
-See [CHATGPT_SETUP.md](../CHATGPT_SETUP.md) for an optional one-click Project/GPT setup.
+1. **Turn on Full access:** ChatGPT **Settings → General → Permissions → Full access**, then choose **Full access** in the chat's permissions menu (Settings only adds it to the menu). Mac: allow Screen Recording and Accessibility if asked. Details in [CHATGPT_SETUP.md](../CHATGPT_SETUP.md).
+2. Open a **new chat** with Full access selected and Agent/browser mode available.
+3. Paste the **short prompt** from `SYSTEM_PROMPT.md` (everything below the line, about 3,000 characters). Its first message repeats the Full access NOTE and asks for your topic and style.
+4. The AI opens the full `PLAYBOOK.md` from GitHub in its browser. It's public, so no login is needed.
+5. Sign in to VideoExpress or accept its one-time Terms screen when asked, then reply `done`.
 
 ### ChatGPT Atlas / a connected Chrome browser
 1. Sign in to https://app.videoexpress.ai/ in that browser **first**.
@@ -60,10 +57,10 @@ If your platform limits instruction length, for example a custom GPT's instructi
 
 | Symptom | Fix |
 |---|---|
-| ChatGPT: "can't access the pasted prompt" / "file read is failing" / "process launcher failed" | You pasted the old long prompt and it became a file. Paste the short prompt from `SYSTEM_PROMPT.md` in a new chat. It loads the playbook from GitHub. |
+| ChatGPT: "process launcher failed" / "process security error" / "file read is failing" | Full access isn't selected for this chat. Settings → General → Permissions → Full access, then pick Full access in the chat's permissions menu, then reply `done`. |
 | AI can't open GitHub | It falls back to the essentials built into the prompt. Or reply: `Open https://github.com/ai-playbooks/realistic-mini-dramas/blob/main/PLAYBOOK.md instead.` |
 | AI asks before following the GitHub page | Reply: `Yes. That's my playbook, follow it.` |
-| ChatGPT: "browser-control session exited unexpectedly" | Reply: `Start a new browser session and continue from the next unfinished step.` If it repeats, open a new chat with Agent mode on. |
+| ChatGPT: "browser-control session exited unexpectedly" | Check Full access is selected for this chat, then reply: `Start a new browser session and continue from the next unfinished step.` If it repeats, restart the app and open a new chat with Full access on. |
 | **Login loop / keeps landing on the login page** | Sign in once in the same browser the agent controls, in the tab it opened. Then reply `done`. In ChatGPT agent mode, take over the agent's browser to sign in. Never paste your password into chat. |
 | **Terms of Service dialog** (first use) | The agent won't accept terms for you. Accept it in the open tab and reply `done`. It only appears once per account. |
 | **"You can generate up to 5 AI videos in parallel…"** | Normal. Nothing was created. The agent waits 60 s and clicks Create Video again. Don't make it start over. |
