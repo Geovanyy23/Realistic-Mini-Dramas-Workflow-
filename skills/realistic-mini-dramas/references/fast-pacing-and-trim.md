@@ -1,6 +1,6 @@
 # Fast pacing and dead-air trimming
 
-Short-form video lives or dies in the first second, and every frozen frame loses viewers. This guide is the detail behind SYSTEM_PROMPT.md Sections 2, 6 and 7c.
+Short-form video lives or dies in the first second, and every frozen frame loses viewers. This guide is the detail behind PLAYBOOK.md Sections 2, 6 and 7c.
 
 ## 1. Hook formulas for S01 (pick one)
 1. **Shock line:** "He's not dead. He's downstairs."

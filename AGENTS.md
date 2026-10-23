@@ -3,7 +3,7 @@
 This repository is a **prompt package**. It contains no software.
 
 ## What to do
-1. Open `SYSTEM_PROMPT.md` and follow it exactly, starting at **Step 1 (Intake)**.
+1. Open `PLAYBOOK.md` (the full instructions) and follow it exactly, starting at **Step 1 (Intake)**.
 2. Do all production work in the VideoExpress web app (https://app.videoexpress.ai/) with your **browser tool**.
 3. Optional reading: `examples/` (finished storyboards to imitate) and `skills/realistic-mini-dramas/references/` (UI click map, pacing and trim guide).
 

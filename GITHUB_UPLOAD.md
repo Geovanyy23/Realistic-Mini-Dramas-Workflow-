@@ -10,7 +10,8 @@ The old version stays in git history, so you can always roll back.
 realistic-mini-dramas/
 ├── README.md               ← start here (how to use in ChatGPT / Claude)
 ├── CHATGPT_SETUP.md        ← ChatGPT: Project/GPT instructions + short first message
-├── SYSTEM_PROMPT.md        ← the copy-paste prompt (full)
+├── SYSTEM_PROMPT.md        ← the short copy-paste prompt (loads PLAYBOOK.md from GitHub)
+├── PLAYBOOK.md             ← the full instructions the AI reads from GitHub
 ├── PROMPT_COMPACT.md       ← short version for instruction-length limits
 ├── AGENTS.md               ← tells Codex: run nothing, browser only
 ├── CLAUDE.md               ← tells Claude Code: run nothing, browser only

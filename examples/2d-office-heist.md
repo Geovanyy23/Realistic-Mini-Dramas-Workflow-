@@ -234,4 +234,4 @@ S10 — Pip's verdict. 2D hand-drawn animation look, clean bold line art, flat c
 
 ## Edit notes
 
-Drag S01…S10 onto track 1 in order, click **Auto Align Clips**, then trim each clip to its target (Section 7c of SYSTEM_PROMPT.md). If your browser tool can't play media, use the default trim: no-dialogue clips lose the first 0.5 s and last 1.0 s; dialogue clips lose the first 0.3 s and last 0.6 s. Auto Align again, play from 0:00, confirm no gaps or frozen holds, then Save → Export Video (High / FullHD / mp4).
+Drag S01…S10 onto track 1 in order, click **Auto Align Clips**, then trim each clip to its target (Section 7c of PLAYBOOK.md). If your browser tool can't play media, use the default trim: no-dialogue clips lose the first 0.5 s and last 1.0 s; dialogue clips lose the first 0.3 s and last 0.6 s. Auto Align again, play from 0:00, confirm no gaps or frozen holds, then Save → Export Video (High / FullHD / mp4).

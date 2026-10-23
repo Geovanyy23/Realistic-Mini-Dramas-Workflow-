@@ -32,15 +32,16 @@ VideoExpress itself was never the problem. The app doesn't block browser automat
 **The one honest limit:** if your chat environment's own browser tool cannot launch, no prompt can fix that. That's the platform, not the workflow. Start a fresh session with browser or agent mode enabled and paste again. v1.0 will at least hand you the full script and prompts before stopping, so nothing is lost.
 
 ### ChatGPT (recommended setup)
-**Follow [CHATGPT_SETUP.md](../CHATGPT_SETUP.md).** In short:
-1. Put `PROMPT_COMPACT.md` (the part below the line) in a **Project's Instructions** or a **custom GPT's Instructions**. Never paste the long prompt into a chat message: ChatGPT turns long pastes into a file, and opening that file is what fails with *"file read is failing"* / *"process launcher failed"*.
-2. Start a new chat in that project or GPT with **Agent mode** on.
-3. Send only the short first message from CHATGPT_SETUP.md, with your topic and style.
+1. Open a **new chat** with **Agent mode** on.
+2. Paste the **short prompt** from `SYSTEM_PROMPT.md` (everything below the line, about 2,500 characters). It's short enough that ChatGPT keeps it as text. Never paste a long prompt, because ChatGPT turns long pastes into a file and opening that file is what fails with *"file read is failing"* / *"process launcher failed"*.
+3. The AI opens the full `PLAYBOOK.md` from GitHub in its browser. It's public, so no login is needed. It uses a connected external browser if there is one, otherwise its built-in browser.
 4. Sign in to VideoExpress or accept its one-time Terms screen when asked, then reply `done`.
+
+See [CHATGPT_SETUP.md](../CHATGPT_SETUP.md) for an optional one-click Project/GPT setup.
 
 ### ChatGPT Atlas / a connected Chrome browser
 1. Sign in to https://app.videoexpress.ai/ in that browser **first**.
-2. Turn on agent mode in that browser and paste `SYSTEM_PROMPT.md` as text.
+2. Turn on agent mode in that browser and paste the short prompt from `SYSTEM_PROMPT.md` (everything below the line).
 3. The agent uses your existing session, so no login step is needed.
 
 ### Codex
@@ -59,7 +60,9 @@ If your platform limits instruction length, for example a custom GPT's instructi
 
 | Symptom | Fix |
 |---|---|
-| ChatGPT: "can't access the pasted prompt" / "file read is failing" / "process launcher failed" | Your long paste became a file. Use [CHATGPT_SETUP.md](../CHATGPT_SETUP.md): instructions go in Project/GPT Instructions, then send a short first message. |
+| ChatGPT: "can't access the pasted prompt" / "file read is failing" / "process launcher failed" | You pasted the old long prompt and it became a file. Paste the short prompt from `SYSTEM_PROMPT.md` in a new chat. It loads the playbook from GitHub. |
+| AI can't open GitHub | It falls back to the essentials built into the prompt. Or reply: `Open https://github.com/ai-playbooks/realistic-mini-dramas/blob/main/PLAYBOOK.md instead.` |
+| AI asks before following the GitHub page | Reply: `Yes. That's my playbook, follow it.` |
 | ChatGPT: "browser-control session exited unexpectedly" | Reply: `Start a new browser session and continue from the next unfinished step.` If it repeats, open a new chat with Agent mode on. |
 | **Login loop / keeps landing on the login page** | Sign in once in the same browser the agent controls, in the tab it opened. Then reply `done`. In ChatGPT agent mode, take over the agent's browser to sign in. Never paste your password into chat. |
 | **Terms of Service dialog** (first use) | The agent won't accept terms for you. Accept it in the open tab and reply `done`. It only appears once per account. |
@@ -71,5 +74,5 @@ If your platform limits instruction length, for example a custom GPT's instructi
 | **Dead air / pauses still in the final video** | Tell the agent: "Do the dead-air trim pass again: trim every clip to its first motion/word and last action/word, Auto Align Clips, play the whole timeline, then re-export." If it can't play media, it uses the fixed fallback (no-dialogue: −0.5 s start / −1.0 s end; dialogue: −0.3 s / −0.6 s). |
 | **Character looks different between shots** | Ask it to use **+ Consistent Character** for each character and turn on **Use Consistent Character** for every shot that character is in. Also make sure the exact Character Bible line is pasted verbatim into every prompt, not paraphrased. Regenerate only the drifting shots. |
 | **Agent starts "auditing" or asks for approval** | Reply: "No audits or approvals. Follow Section 0 and continue production." Then start a fresh chat and paste the v1.0 prompt again; an older version may still be in context. |
-| **Agent says it needs to read a file or run code** | It's using an old version or the file is attached. Paste `SYSTEM_PROMPT.md` as text in a new chat. |
+| **Agent says it needs to read a file or run code** | It's using an old version or the file is attached. Paste the short prompt from `SYSTEM_PROMPT.md` in a new chat. It loads the playbook from GitHub in the browser. |
 | **Out of credits / upgrade screen** | Top up in the open tab and reply `done`. The agent continues where it stopped. |
