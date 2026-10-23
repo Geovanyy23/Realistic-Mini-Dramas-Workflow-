@@ -10,7 +10,7 @@ Paste one prompt, name a topic and pick a style. Your AI agent then builds a **f
 
 1. **Sign in** to https://app.videoexpress.ai/ (or sign in when the agent asks).
 2. Open a **new chat that can control a browser**:
-   - **ChatGPT:** Agent mode (or Atlas agent mode, or connected Chrome)
+   - **ChatGPT (Mac/Windows app):** first set **Settings → General → Permissions → Full access** and choose Full access in the chat's permissions menu. Without it the browser automation can't start. The prompt's first message walks you through this. See [CHATGPT_SETUP.md](CHATGPT_SETUP.md).
    - **Claude:** Claude in Chrome, or the Claude desktop app's built-in browser
 3. **Paste the short prompt** from [SYSTEM_PROMPT.md](SYSTEM_PROMPT.md) (everything below the line, about 2,500 characters). It tells the AI to open the full [PLAYBOOK.md](PLAYBOOK.md) from this public repo in its browser. No GitHub login is needed, and it's short enough that ChatGPT keeps it as text instead of turning it into a file.
 4. Answer the one question (or fill in the Topic/Style lines at the end of the prompt):
@@ -39,7 +39,7 @@ There's no audit, no preflight and no approval step. The agent only comes back t
 |---|---|
 | [SYSTEM_PROMPT.md](SYSTEM_PROMPT.md) | **The prompt to paste.** Short, and loads PLAYBOOK.md from GitHub. Also what goes on the community page |
 | [PLAYBOOK.md](PLAYBOOK.md) | **The full instructions** the AI reads from GitHub. Edit this to update every user at once |
-| [CHATGPT_SETUP.md](CHATGPT_SETUP.md) | ChatGPT tips, plus an optional Project/custom GPT setup |
+| [CHATGPT_SETUP.md](CHATGPT_SETUP.md) | **ChatGPT:** the Full access setting it needs, plus an optional Project/custom GPT setup |
 | [PROMPT_COMPACT.md](PROMPT_COMPACT.md) | Under 8,000 characters, for custom GPT instructions or Claude Project instructions |
 | [examples/](examples/) | Complete storyboards (Realistic, 3D, 2D) with every prompt written out |
 | [skills/realistic-mini-dramas/](skills/realistic-mini-dramas/) | Agent Skill version with the VideoExpress UI map and pacing/trim guide |
